@@ -1,4 +1,4 @@
-# Textual modality description
+# Textual modality description approach
 
 The implementation of the paper 'Interpretable multimodal sentiment analysis based on textual modality descriptions by using large-scale language models'
 
