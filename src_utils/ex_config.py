@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jun  6 11:45:08 2022
-
-@author: 30816
+This script is to set configs
 """
 
 import os
@@ -46,7 +44,7 @@ class configuration():
                  early_stop=5, 
                  ep_before_early_stop=3, 
                  ex_group='Bert', 
-                 ex_dataset='IEMOCAP', 
+                 ex_dataset='Hazumi', 
                  pretrained_pooling='CLS', 
                  model_type='LSTM', 
                  result_save_root='../results', 

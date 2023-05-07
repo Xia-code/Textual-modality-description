@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun  9 17:07:57 2022
-
-@author: 30816
+This scrip is the training process for models except late fusion with validations
 """
 
 import os

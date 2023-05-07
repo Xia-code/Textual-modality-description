@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun  1 14:27:15 2022
-
-@author: 30816
+This script is the process for Freezing model training, DNN-base and Ealy fusion
 """
 
 import numpy as np
@@ -15,13 +13,7 @@ from sklearn.utils.class_weight import compute_class_weight
 
 def split_fold_data_no_valid(data_dict, info_dict, config_vars, model_key, modality_key, modality2data_key, fold, fold_train_group=None, normalize_key=1):
     data_split_dict = {'train': [], 'test': []}
-    if(config_vars['ex_dataset'].split('-')[0] == 'IEMOCAP'):
-        for index in data_dict['file_name']:
-            if(int(data_dict['file_name'][index][4]) == fold + 1):
-                data_split_dict['test'].append(index)
-            else:
-                data_split_dict['train'].append(index)
-    elif(config_vars['ex_dataset'].split('-')[0] == 'Hazumi'):
+    if(config_vars['ex_dataset'].split('-')[0] == 'Hazumi'):
         for index in data_dict['group']:
             if(data_dict['group'][index] not in fold_train_group[fold + 1]):
                 data_split_dict['test'].append(index)
@@ -57,13 +49,7 @@ def split_fold_data_no_valid(data_dict, info_dict, config_vars, model_key, modal
 def split_fold_data_has_valid(data_dict, info_dict, config_vars, model_key, modality_key, modality2data_key, fold, fold_train_group=None, normalize_key=1):
     data_split_dict = {'train': [], 'valid': [], 'test': []}
     train_index_temp = []
-    if(config_vars['ex_dataset'][:7] == 'IEMOCAP'):
-        for index in data_dict['file_name']:
-            if(int(data_dict['file_name'][index][4]) == fold +1):
-                data_split_dict['test'].append(index)
-            else:
-                train_index_temp.append(index)
-    elif(config_vars['ex_dataset'][:6] == 'Hazumi'):
+    if(config_vars['ex_dataset'][:6] == 'Hazumi'):
         for index in data_dict['group']:
             if(data_dict['group'][index] not in fold_train_group[fold + 1]):
                 data_split_dict['test'].append(index)
